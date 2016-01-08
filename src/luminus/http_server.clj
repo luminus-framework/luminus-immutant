@@ -15,9 +15,9 @@
       (reset!
        http-server
        (apply immutant/run handler (format-opts opts)))
-      (log/info "server started on port:" (:port @http-server))
+      (log/info "server started on port" (:port @http-server))
       (catch Throwable t
-        (log/error t (str "server failed to start on port: " port))))))
+        (log/error t (str "server failed to start on port " port))))))
 
 (defn stop [destroy]
   (when @http-server
