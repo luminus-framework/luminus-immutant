@@ -1,10 +1,6 @@
 # luminus-immutant
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+Immutant HTTP adapter for Luminus
 
 ## License
 
