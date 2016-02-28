@@ -8,14 +8,13 @@
 (defn start [{:keys [handler init port] :as opts}]
   (try
     (init)
-    (reset!
-      http-server
-      (apply immutant/run handler (format-opts opts)))
-    (log/info "server started on port" (:port @http-server))
+    (let [server (apply immutant/run handler (format-opts opts))]
+      (log/info "server started on port" (:port server))
+      server)
     (catch Throwable t
       (log/error t (str "server failed to start on port " port)))))
 
-(defn stop [http-server destroy]
+(defn stop [server destroy]
   (destroy)
-  (immutant/stop http-server)
+  (immutant/stop server)
   (log/info "HTTP server stopped"))
