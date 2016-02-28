@@ -3,18 +3,16 @@
             [immutant.web :as immutant]))
 
 (defn format-opts [opts]
-  (->> (dissoc opts :handler :init) (merge {:host "0.0.0.0"}) vec flatten))
+  (->> (dissoc opts :handler) (merge {:host "0.0.0.0"}) vec flatten))
 
-(defn start [{:keys [handler init port] :as opts}]
+(defn start [{:keys [handler port] :as opts}]
   (try
-    (init)
-    (let [server (apply immutant/run handler (format-opts opts))]
-      (log/info "server started on port" (:port server))
-      server)
+    (log/info "starting HTTP server on port" port)
+    (apply immutant/run handler (format-opts opts))
     (catch Throwable t
-      (log/error t (str "server failed to start on port " port)))))
+      (log/error t (str "server failed to start on port " port))
+      (throw t))))
 
-(defn stop [server destroy]
-  (destroy)
+(defn stop [server]
   (immutant/stop server)
   (log/info "HTTP server stopped"))
