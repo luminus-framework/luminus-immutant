@@ -6,7 +6,7 @@
   (merge
     {:host "0.0.0.0"}
     (select-keys
-      (dissoc opts :contexts :path)
+      (dissoc opts :contexts)
       (-> #'immutant/run meta :valid-options))))
 
 (defn start [{:keys [handler port] :as opts}]
