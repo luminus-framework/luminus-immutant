@@ -12,7 +12,6 @@
 (defn start [{:keys [handler port] :as opts}]
   (try
     (log/info "starting HTTP server on port" port)
-    (clojure.pprint/pprint (run-options opts))
     (immutant/run handler (run-options opts))
     (catch Throwable t
       (log/error t (str "server failed to start on port " port))
