@@ -1,4 +1,4 @@
-(defproject luminus-immutant "0.2.3"
+(defproject luminus-immutant "0.2.4"
   :description "Immutant HTTP adapter for Luminus"
   :url "https://github.com/luminus-framework/luminus-immutant"
   :license {:name "Eclipse Public License"
