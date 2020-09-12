@@ -1,5 +1,7 @@
 # luminus-immutant
 
+[![Clojars Project](https://img.shields.io/clojars/v/luminus-immutant.svg)](https://clojars.org/luminus-immutant)
+
 Immutant HTTP adapter for Luminus
 
 ## Usage
